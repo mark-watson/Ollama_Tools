@@ -5,8 +5,8 @@ Provides a collection of utility functions for working with LLMs via Ollama
 
 from typing import List, Callable
 from .file_contents import read_file_contents, write_file_contents
-from .file_dir import list_directory, create_directory
-from .Internet Access import search_web
+from .file_dir import list_directory, list_directory
+from .web_search import search_web
 
 def tools() -> List[Callable]:
   """
@@ -19,7 +19,7 @@ def tools() -> List[Callable]:
       read_file_contents,
       write_file_contents,
       list_directory,
-      create_directory,
+      list_directory,
       search_web
   ]
 
@@ -28,7 +28,6 @@ __all__ = [
   'read_file_contents',
   'write_file_contents', 
   'list_directory',
-  'create_directory',
   'search_web',
   'tools'
 ]
