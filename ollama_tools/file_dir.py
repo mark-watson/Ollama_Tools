@@ -7,7 +7,7 @@ from typing import Dict, List, Any
 from pathlib import Path
 import os
 
-def list_directory(pattern: str = "*") -> Dict[str, Any]:
+def list_directory(pattern: str = "*", list_dots: boolean = None) -> Dict[str, Any]:
   """
   Lists files and directories in the current working directory
 
@@ -27,6 +27,8 @@ def list_directory(pattern: str = "*") -> Dict[str, Any]:
 
       # Convert Path objects to strings and sort
       file_list = sorted([str(f.name) for f in files])
+      if not list_dots:
+        file_list = [file for file in file_list if not file.startswith(".")]
 
       return {
           'files': file_list,
