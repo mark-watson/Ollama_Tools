@@ -7,7 +7,7 @@ from typing import Dict, List, Any
 from pathlib import Path
 import os
 
-def list_directory(pattern: str = "*", list_dots: boolean = None) -> Dict[str, Any]:
+def list_directory(pattern: str = "*", list_dots = None) -> Dict[str, Any]:
   """
   Lists files and directories in the current working directory
 
