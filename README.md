@@ -21,3 +21,7 @@ Output of uri_to_markdown: {'content': 'Read My Blog on Blogspot ...
 The problem with this is that this does allow chaining tools, calling a tool,
 evaluating tool results with the original prompt fragment that triggered the tool, etc.
 
+## Ollama's "new" JSON output support
+
+https://ollama.com/blog/structured-outputs
+
