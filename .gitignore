@@ -3,6 +3,9 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+test123.txt
+uv.lock
+
 .vscode
 *~
 *.py~
