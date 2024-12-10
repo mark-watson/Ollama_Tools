@@ -17,6 +17,9 @@ setup(
     ],
     python_requires=">=3.7",
     install_requires=[
-        # Add your package dependencies here
+         "requests",
+         "beautifulsoup4",
+         "aisuite[ollama]",
+         "ollama",
     ],
 )
