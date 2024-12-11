@@ -7,7 +7,7 @@ from typing import Optional, Dict, Any
 from pathlib import Path
 import json
 
-def read_file_contents(file_path: str, encoding: str = 'utf-8') -> Dict[str, Any]:
+def read_file_contents(file_path: str, encoding: str = 'utf-8') -> str:
   """
   Reads contents from a file and returns them along with metadata
 
@@ -16,11 +16,7 @@ def read_file_contents(file_path: str, encoding: str = 'utf-8') -> Dict[str, Any
       encoding (str): File encoding to use (default: utf-8)
 
   Returns:
-      Dict[str, Any]: Dictionary containing:
-          - 'content': File contents as string
-          - 'size': File size in bytes
-          - 'exists': Boolean indicating if file exists
-          - 'error': Error message if any, None otherwise
+      Contents of the file as a string
   """
   try:
       path = Path(file_path)
@@ -70,10 +66,9 @@ def write_file_contents(
 # Function metadata for Ollama integration
 read_file_contents.metadata = {
   'name': 'read_file_contents',
-  'description': 'Reads contents from a file and returns them with metadata',
+  'description': 'Reads contents from a file and returns the content as a string',
   'parameters': {
-      'file_path': 'Path to the file to read',
-      'encoding': 'File encoding (default: utf-8)'
+      'file_path': 'Path to the file to read'
   }
 }
 
