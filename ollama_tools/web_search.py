@@ -19,20 +19,13 @@ def uri_to_markdown(a_uri: str) -> Dict[str, Any]:
       a_uri (str): URI to fetch and convert
 
   Returns:
-      Dict[str, Any]: Dictionary containing:
-          - 'content': Converted markdown content
-          - 'title': Page title if found
-          - 'error': Error message if any, None otherwise
+      web page text converted converted markdown content
   """
   try:
       # Validate URI
       parsed = urlparse(a_uri)
       if not all([parsed.scheme, parsed.netloc]):
-          return {
-              'content': None,
-              'title': None,
-              'error': f"Invalid URI: {a_uri}"
-          }
+          return f"Invalid URI: {a_uri}"
 
       # Fetch content
       headers = {
@@ -73,24 +66,14 @@ def uri_to_markdown(a_uri: str) -> Dict[str, Any]:
       text = html.unescape(text)  # Convert HTML entities
       text = text.strip()
 
-      return {
-          'content': text,
-          'title': title,
-          'error': None
-      }
+      return f"Contents of URI {a_uri} is:\n{text}\n"
 
   except requests.RequestException as e:
-      return {
-          'content': None,
-          'title': None,
-          'error': f"Network error: {str(e)}"
-      }
+      return f"Network error: {str(e)}"
+
   except Exception as e:
-      return {
-          'content': None,
-          'title': None,
-          'error': f"Error processing URI: {str(e)}"
-      }
+      return f"Error processing URI: {str(e)}"
+
 
 def search_web(query: str, max_results: int = 5) -> Dict[str, Any]:
   """

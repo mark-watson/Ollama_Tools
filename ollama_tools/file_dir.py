@@ -15,11 +15,7 @@ def list_directory(pattern: str = "*", list_dots = None) -> Dict[str, Any]:
       pattern (str): Glob pattern for filtering files (default: "*")
 
   Returns:
-      Dict[str, Any]: Dictionary containing:
-          - 'files': List of file names
-          - 'count': Number of files found
-          - 'current_dir': Current working directory path
-          - 'error': Error message if any, None otherwise
+      string with directory name, followed by list of files in the directory
   """
   try:
       current_dir = Path.cwd()
@@ -32,20 +28,11 @@ def list_directory(pattern: str = "*", list_dots = None) -> Dict[str, Any]:
       if not list_dots:
         file_list = [file for file in file_list if not file.startswith(".")]
 
-      return {
-          'files': file_list,
-          'count': len(file_list),
-          'current_dir': str(current_dir),
-          'error': None
-      }
+      return f"Contents of current directory: [{', '.join(file_list)}]"
 
   except Exception as e:
-      return {
-          'files': [],
-          'count': 0,
-          'current_dir': str(Path.cwd()),
-          'error': f"Error listing directory: {str(e)}"
-      }
+      return f"Error listing directory: {str(e)}"
+
 
 # Function metadata for Ollama integration
 list_directory.metadata = {

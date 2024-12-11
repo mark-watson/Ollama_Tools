@@ -25,37 +25,22 @@ def read_file_contents(file_path: str, encoding: str = 'utf-8') -> Dict[str, Any
   try:
       path = Path(file_path)
       if not path.exists():
-          return {
-              'content': None,
-              'size': 0,
-              'exists': False,
-              'error': f"File not found: {file_path}"
-          }
+          return f"File not found: {file_path}"
 
       with path.open('r', encoding=encoding) as f:
           content = f.read()
-
-      return {
-          'content': content,
-          'size': path.stat().st_size,
-          'exists': True,
-          'error': None
-      }
+          return f"Contents of file '{file_path}' is:\n{content}\n"
 
   except Exception as e:
-      return {
-          'content': None,
-          'size': 0,
-          'exists': True,
-          'error': f"Error reading file: {str(e)}"
-      }
+      return f"Error reading file '{file_path}' is: {str(e)}"
+
 
 def write_file_contents(
   file_path: str, 
   content: str, 
   encoding: str = 'utf-8', 
   mode: str = 'w'
-) -> Dict[str, Any]:
+) -> str:
   """
   Writes content to a file and returns operation status
 
@@ -66,10 +51,7 @@ def write_file_contents(
       mode (str): Write mode ('w' for write, 'a' for append)
 
   Returns:
-      Dict[str, Any]: Dictionary containing:
-          - 'success': Boolean indicating if write was successful
-          - 'bytes_written': Number of bytes written
-          - 'error': Error message if any, None otherwise
+      a message string
   """
   try:
       path = Path(file_path)
@@ -80,18 +62,10 @@ def write_file_contents(
       with path.open(mode, encoding=encoding) as f:
           bytes_written = f.write(content)
 
-      return {
-          'success': True,
-          'bytes_written': bytes_written,
-          'error': None
-      }
+      return f"File '{file_path}' written OK."
 
   except Exception as e:
-      return {
-          'success': False,
-          'bytes_written': 0,
-          'error': f"Error writing file: {str(e)}"
-      }
+      return f"Error writing file '{file_path}': {str(e)}"
 
 # Function metadata for Ollama integration
 read_file_contents.metadata = {
