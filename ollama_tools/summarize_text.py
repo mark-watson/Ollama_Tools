@@ -9,7 +9,7 @@ import json
 from ollama import chat
 from ollama import ChatResponse
 
-def summarize_text(text: str, context: str = '', encoding: str = 'utf-8') -> str:
+def summarize_text(text: str, context: str = '') -> str:
   """
   Summarizes text
 
