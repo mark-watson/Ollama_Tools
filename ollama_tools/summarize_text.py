@@ -19,6 +19,7 @@ def summarize_text(text: str, encoding: str = 'utf-8') -> str:
   Returns:
       a string os summarized text
   """
+  print(f"\n\n**** summarize input text:\n\n{text}\n\n")
   summary : ChatResponse = chat(
     model="llama3.2:latest",
     messages=[
