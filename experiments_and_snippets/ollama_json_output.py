@@ -26,7 +26,7 @@ response = chat(
       ''',
     }
   ],
-  model='llama3.2:latest',
+  model='granite3-dense', # 'llama3.2:latest',
   format=PetList.model_json_schema(),
 )
 print(response)

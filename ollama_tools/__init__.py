@@ -20,7 +20,6 @@ def tools() -> List[Callable]:
       read_file_contents,
       write_file_contents,
       list_directory,
-      list_directory,
       search_web,
       summarize_text
   ]
