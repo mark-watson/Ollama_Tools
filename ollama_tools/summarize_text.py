@@ -22,6 +22,7 @@ def summarize_text(text: str, context: str = '', encoding: str = 'utf-8') -> str
   print(f"\n\n**** summarize input text:\n\n{text}\n\n")
   if len(text.strip()) < 10:
     text = context
+    print(f"\n* * modified text:\n{text}\n")
   summary : ChatResponse = chat(
     model="llama3.2:latest",
     messages=[
