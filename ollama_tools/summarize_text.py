@@ -9,7 +9,7 @@ import json
 from ollama import chat
 from ollama import ChatResponse
 
-def summarize_text(text: str, encoding: str = 'utf-8') -> str:
+def summarize_text(text: str, context: str = '', encoding: str = 'utf-8') -> str:
   """
   Summarizes text
 
@@ -25,7 +25,7 @@ def summarize_text(text: str, encoding: str = 'utf-8') -> str:
     messages=[
         {"role": "system",
          "content":
-         "You are an expert at summarizing an input string. The only thing you return is the summarized text."},
+         f"You are an expert at summarizing an input string. The only thing you return is the summarized text. Extra context for you to use:\n{context}\n"},
         {"role": "user", "content": text}
     ])
   return summary['message']['content']
