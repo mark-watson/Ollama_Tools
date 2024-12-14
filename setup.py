@@ -17,10 +17,10 @@ setup(
     ],
     python_requires=">=3.7",
     install_requires=[
-         "requests",
-         "beautifulsoup4",
-         "aisuite[ollama]",
-         "ollama >= 0.4.4",
-         "openai",
+        "requests",
+        "beautifulsoup4",
+        "aisuite[ollama]",
+        "ollama >= 0.4.4",
+        "openai",
     ],
 )

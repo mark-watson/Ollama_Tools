@@ -9,43 +9,45 @@ import json
 from ollama import chat
 from ollama import ChatResponse
 
-def summarize_text(text: str, context: str = '') -> str:
-  """
-  Summarizes text
 
-  Args:
-      text (str): text to summarize
-      context (str): another tool's output can at the application layer can be used set the context for this tool.
+def summarize_text(text: str, context: str = "") -> str:
+    """
+    Summarizes text
 
-  Returns:
-      a string os summarized text
-  """
-  print(f"\n\n**** summarize input text:\n\n{text}\n\n")
-  prompt0 = "You are an expert at summarizing an input string. The only thing you return is the summarized text."
-  if len(text.strip()) < 10:
-    text = context
-    print(f"\n* * modified text:\n{text}\n")
-  else:
-    if len(context) > 10:
-      prompt0 += "\n" + context
-  summary : ChatResponse = chat(
-    model="llama3.2:latest",
-    messages=[
-        {"role": "system",
-         "content":
-         f" Extra context for you to use:\n{context}\n"},
-        {"role": "user", "content": text}
-    ])
-  return summary['message']['content']
+    Args:
+        text (str): text to summarize
+        context (str): another tool's output can at the application layer can be used set the context for this tool.
+
+    Returns:
+        a string os summarized text
+    """
+    print(f"\n\n**** summarize input text:\n\n{text}\n\n")
+    prompt0 = "You are an expert at summarizing an input string. The only thing you return is the summarized text."
+    if len(text.strip()) < 10:
+        text = context
+        print(f"\n* * modified text:\n{text}\n")
+    else:
+        if len(context) > 10:
+            prompt0 += "\n" + context
+    summary: ChatResponse = chat(
+        model="llama3.2:latest",
+        messages=[
+            {
+                "role": "system",
+                "content": f" Extra context for you to use:\n{context}\n",
+            },
+            {"role": "user", "content": text},
+        ],
+    )
+    return summary["message"]["content"]
+
 
 # Function metadata for Ollama integration
 summarize_text.metadata = {
-  'name': 'summarize_text',
-  'description': 'Summarizes input text',
-  'parameters': {
-    'text': 'string of text to summarize'
-  }
+    "name": "summarize_text",
+    "description": "Summarizes input text",
+    "parameters": {"text": "string of text to summarize"},
 }
 
 # Export the functions
-__all__ = ['summarize_text']
+__all__ = ["summarize_text"]
