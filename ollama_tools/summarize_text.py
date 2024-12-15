@@ -17,6 +17,7 @@ def summarize_text(text: str, context: str = "", markdown: str = '') -> str:
     Args:
         text (str): text to summarize
         context (str): another tool's output can at the application layer can be used set the context for this tool.
+        markdown (str): another tool's output that is text in markdown format
 
     Returns:
         a string os summarized text
