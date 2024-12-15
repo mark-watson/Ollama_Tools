@@ -10,7 +10,7 @@ from ollama import chat
 from ollama import ChatResponse
 
 
-def summarize_text(text: str, context: str = "") -> str:
+def summarize_text(text: str, context: str = "", markdown: str = '') -> str:
     """
     Summarizes text
 
@@ -34,7 +34,7 @@ def summarize_text(text: str, context: str = "") -> str:
         messages=[
             {
                 "role": "system",
-                "content": f" Extra context for you to use:\n{context}\n",
+                "content": prompt0,
             },
             {"role": "user", "content": text},
         ],
