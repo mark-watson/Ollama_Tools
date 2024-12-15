@@ -24,8 +24,13 @@ def summarize_text(text: str, context: str = "", markdown: str = '') -> str:
     print(f"\n\n**** summarize input text:\n\n{text}\n\n")
     prompt0 = "You are an expert at summarizing an input string. The only thing you return is the summarized text."
     if len(text.strip()) < 10:
-        text = context
-        print(f"\n* * modified text:\n{text}\n")
+        if len(context.strip()) > 10:
+            text = context
+            print(f"\n* * modified text (context):\n{text}\n")
+        else:
+            if len(markdown.strip()) > 10:
+                text = markdown
+                print(f"\n* * modified text (markdown):\n{text}\n")
     else:
         if len(context) > 10:
             prompt0 += "\n" + context
