@@ -10,14 +10,13 @@ from ollama import chat
 from ollama import ChatResponse
 
 
-def summarize_text(text: str, context: str = "", markdown: str = '') -> str:
+def summarize_text(text: str, context: str = "") -> str:
     """
     Summarizes text
 
     Args:
         text (str): text to summarize
         context (str): another tool's output can at the application layer can be used set the context for this tool.
-        markdown (str): another tool's output that is text in markdown format
 
     Returns:
         a string os summarized text
@@ -25,13 +24,8 @@ def summarize_text(text: str, context: str = "", markdown: str = '') -> str:
     print(f"\n\n**** summarize input text:\n\n{text}\n\n")
     prompt0 = "You are an expert at summarizing an input string. The only thing you return is the summarized text."
     if len(text.strip()) < 10:
-        if len(context.strip()) > 10:
-            text = context
-            print(f"\n* * modified text (context):\n{text}\n")
-        else:
-            if len(markdown.strip()) > 10:
-                text = markdown
-                print(f"\n* * modified text (markdown):\n{text}\n")
+        text = context
+        print(f"\n* * modified text (context):\n{text}\n")
     else:
         if len(context) > 10:
             prompt0 += "\n" + context
