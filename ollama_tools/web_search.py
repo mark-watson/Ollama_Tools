@@ -1,5 +1,4 @@
 """
-Web Search Module
 Provides functions for web searching and HTML to Markdown conversion
 and for returning the contents of a URI as plain text (with minimal markdown)
 """
@@ -12,7 +11,7 @@ from urllib.parse import urlparse
 import html
 from ollama import chat
 
-from summarize_text import summarize_text
+from .summarize_text import summarize_text
 
 import requests
 import os
