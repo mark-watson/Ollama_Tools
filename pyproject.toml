@@ -1,31 +1,13 @@
-[build-system]
-requires = ["setuptools>=42", "wheel"]
-build-backend = "setuptools.build_meta"
-
 [project]
-name = "ollama_tools"
+name = "ollama-tools"
 version = "0.1.0"
-description = "A Python package for tools related to Ollama"
+description = "Add your description here"
 readme = "README.md"
-authors = [
-    {name = "Mark Watson", email = "markw@markwatson.com"}
-]
-license = {file = "LICENSE"}
-
+requires-python = ">=3.13"
 dependencies = [
-  
- "requests",
-  
- "beautifulsoup4",
-  
- "aisuite[ollama]",
-  
- "ollama==0.4.4",
-  
- "openai>=1.57.2",
-]  
-
-requires-python = ">=3.10"
-
-[project.urls]
-Homepage = "https://github.com/mark-watson/Ollama_Tools"
+    "aisuite[ollama]>=0.1.6",
+    "beautifulsoup4>=4.12.3",
+    "ollama>=0.4.4",
+    "openai>=1.57.2",
+    "requests>=2.32.3",
+]
